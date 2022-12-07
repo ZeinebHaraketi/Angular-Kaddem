@@ -1,1 +1,77 @@
-<p>edit-projet works!</p>
+<h2 style="color: red;">Modification d'un Projet</h2>
+<br>
+<br>
+<br>
+<br>
+
+<form [formGroup]="formP">
+    <h6 class="heading-small text-muted mb-4">Modifier un Projet</h6>
+    <div class="pl-lg-4">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-username">Id:</label>
+            <input type="text" id="input-username" class="form-control form-control-alternative" 
+            formControlName="idProjet" 
+            >
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-email">Description:</label>
+            <input type="text" id="input-username" class="form-control form-control-alternative" 
+            formControlName="description"
+            >
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <hr class="my-4" />
+   
+   <button class="btn btn-success" (click)="updateProjet()">{{button}}</button>
+  </form>
+
+  <!--<div class="edit-form">
+    <h4>Modification du Projet</h4>
+    <form >
+      <div class="form-group">
+        <label for="idProjet">id</label>
+        <input
+          type="text"
+          class="form-control"
+          id="idProjet"
+          [(ngModel)]="currentProjet.idProjet"
+          name="idProjet"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentProjet.description"
+          name="description"
+        />
+      </div>
+  
+     
+    </form>
+  
+   
+  
+    <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+      Delete
+    </button>
+  
+    <button type="submit" class="badge badge-success" (click)="updateProjet()">
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+  
+  <div *ngIf="!currentProjet">
+    <br />
+    <p>Cannot access this Project...</p>
+  </div>-->

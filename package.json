@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "server": "json-server --watch springdb.json"
   },
   "private": true,
   "dependencies": {
@@ -20,9 +21,11 @@
     "@angular/elements": "^13.3.1",
     "@angular/forms": "^13.3.1",
     "@angular/localize": "13.3.1",
+    "@angular/material": "^15.0.1",
     "@angular/platform-browser": "^13.3.1",
     "@angular/platform-browser-dynamic": "^13.3.1",
     "@angular/router": "^13.3.1",
+    "@material/dialog": "^14.0.0",
     "@ng-bootstrap/ng-bootstrap": "12.0.1",
     "@popperjs/core": "^2.11.4",
     "bootstrap": "4.6.1",

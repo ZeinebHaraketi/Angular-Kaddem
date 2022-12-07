@@ -1,1 +1,67 @@
-<p>add-projet works!</p>
+<h2 style="color: red;">Ajout d'un Projet</h2>
+<br>
+<br>
+<br>
+<br>
+<!--*ngIf="form"-->
+<!--<form [formGroup]="rf">
+    <h6 class="heading-small text-muted mb-4">Ajouter un Projet</h6>
+    <div class="pl-lg-4">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-username">Id:</label>
+            <input type="text" id="input-username" class="form-control form-control-alternative" 
+            formControlName="idProjet"
+            >
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label" for="input-email">Description:</label>
+            <input type="text" id="input-username" class="form-control form-control-alternative"   
+            formControlName="description"
+            >
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <hr class="my-4" />
+   
+   <button class="btn btn-success" (click)="addProjet()">Save</button>
+  </form>-->
+
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="idProjet">id</label>
+        <input
+          type="text"
+          class="form-control"
+          id="idProjet"
+          required
+          [(ngModel)]="proj.idProjet"
+          name="idProjet"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="proj.description"
+          name="description"
+        />
+      </div>
+  
+      <button (click)="saveP()" class="btn btn-success">Submit</button>
+    </div>
+  
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newProjet()">Add</button>
+    </div>
+  </div>

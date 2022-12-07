@@ -1,0 +1,79 @@
+[
+{"type":"header","version":"5.1.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"springdb"},
+{"type":"table","name":"contrat","database":"springdb","data":
+[
+{"id_contrat":"13","archive":"1","date_debut_contrat":"2022-01-08 00:04:00","date_fin_contrat":"2023-01-10 00:04:00","montant_contrat":"3500","specialite":"IA","etudiant_id_etudiant":null},
+{"id_contrat":"14","archive":"1","date_debut_contrat":"2022-01-08 00:04:00","date_fin_contrat":"2023-01-10 00:04:00","montant_contrat":"400","specialite":"CLOUD","etudiant_id_etudiant":null},
+{"id_contrat":"15","archive":"1","date_debut_contrat":"2022-01-12 00:11:00","date_fin_contrat":"2023-01-12 00:12:00","montant_contrat":"500","specialite":"IA","etudiant_id_etudiant":null},
+{"id_contrat":"16","archive":"1","date_debut_contrat":"2021-01-06 00:06:00","date_fin_contrat":"2024-01-04 00:05:00","montant_contrat":"1470","specialite":"RESEAUX","etudiant_id_etudiant":null},
+{"id_contrat":"17","archive":"1","date_debut_contrat":"2021-01-06 00:06:00","date_fin_contrat":"2024-01-04 00:05:00","montant_contrat":"1250","specialite":"RESEAUX","etudiant_id_etudiant":null},
+{"id_contrat":"18","archive":"1","date_debut_contrat":"2016-01-08 00:04:00","date_fin_contrat":"2017-01-10 00:04:00","montant_contrat":"4400","specialite":"CLOUD","etudiant_id_etudiant":null},
+{"id_contrat":"19","archive":"1","date_debut_contrat":"2021-01-06 00:06:00","date_fin_contrat":"2024-01-04 00:05:00","montant_contrat":"2250","specialite":"RESEAUX","etudiant_id_etudiant":null},
+{"id_contrat":"20","archive":"1","date_debut_contrat":"2021-01-06 00:06:00","date_fin_contrat":"2024-01-04 00:05:00","montant_contrat":"8750","specialite":"RESEAUX","etudiant_id_etudiant":null},
+{"id_contrat":"21","archive":"1","date_debut_contrat":"2016-01-08 00:04:00","date_fin_contrat":"2017-01-10 00:04:00","montant_contrat":"4400","specialite":"CLOUD","etudiant_id_etudiant":null}
+]
+}
+,{"type":"table","name":"departement","database":"springdb","data":
+[
+{"id_depart":"1","nom_depart":"TWIN"},
+{"id_depart":"2","nom_depart":"DS"},
+{"id_depart":"3","nom_depart":"3IA"},
+{"id_depart":"4","nom_depart":"SLEAM"}
+]
+}
+,{"type":"table","name":"detail_equipe","database":"springdb","data":
+[
+{"salle":"1","thematique":"CLOUD"}
+]
+}
+,{"type":"table","name":"enseignant","database":"springdb","data":
+[
+{"id_ens":"2","nom_en":"Mariem","prenom_en":"Khadhraoui","salaire":"1650.87"}
+]
+}
+,{"type":"table","name":"equipe","database":"springdb","data":
+[
+{"id_equipe":"2","niveau":"JUNIOR","nom_equipe":"Inferno","detail_equipe_salle":"1","projet_id_projet":null},
+{"id_equipe":"3","niveau":"JUNIOR","nom_equipe":"Inferno","detail_equipe_salle":"1","projet_id_projet":null},
+{"id_equipe":"4","niveau":"JUNIOR","nom_equipe":"Inferno-PROG","detail_equipe_salle":"1","projet_id_projet":null}
+]
+}
+,{"type":"table","name":"etudiant","database":"springdb","data":
+[
+{"id_etudiant":"1","nome":"Felfel","opt":"SE","prenome":"Hiba","departements_id_depart":null}
+]
+}
+,{"type":"table","name":"etudiant_etudiant_equipe","database":"springdb","data":
+[
+
+]
+}
+,{"type":"table","name":"projet","database":"springdb","data":
+[
+{"id_projet":"2","description":"Projet MERN Stack"},
+{"id_projet":"3","description":"Projet MEAN Stack"}
+
+]
+}
+,{"type":"table","name":"projet_equipes","database":"springdb","data":
+[
+
+]
+}
+,{"type":"table","name":"universite","database":"springdb","data":
+[
+
+]
+}
+,{"type":"table","name":"universite_departements","database":"springdb","data":
+[
+
+]
+}
+,{"type":"table","name":"universite_enseignants","database":"springdb","data":
+[
+
+]
+}
+]
