@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Projet } from 'src/app/Core/models/Projet.model';
 import { ProjetService } from 'src/app/Core/services/projet/projet.service';
+
 
 @Component({
   selector: 'app-listprojet',
@@ -14,18 +16,26 @@ export class ListprojetComponent implements OnInit {
   projet !: Projet;
   closeResult !: string;
   currentProjet = null;
+  //totalElements: number = 0;
+
+  @ViewChild('myform')form!:NgForm;
+
+  projetToUpdate= {
+    idProjet: "",
+    description: ""
+  }
 
   constructor(private projetService: ProjetService,private r: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllProjets();
-
-    this.projet = {
+   //this.getProj({ page: "0", size: "5" });
+    /*this.projet = {
       idProjet: null,
       description:null
     }
 
-    this.getProjet(this.route.snapshot.paramMap.get('idProjet'));
+    this.getProjet(this.route.snapshot.paramMap.get('idProjet'));*/
 
   }
 
@@ -45,25 +55,13 @@ export class ListprojetComponent implements OnInit {
     this.projetService.getAllProjects().subscribe(res=>this.listP=res);
   }
 
-  /*deleteProjet(idProjet: any){
-    this.projetService.deleteProjet(idProjet).subscribe(()=> this.getAllProjets());
-  }*/
 
-  editProjet(){
+  /*editProjet(){
     this.r.navigate(['editprojet'])
-  }
-
-  /*deleteProjet() {
-    this.projetService.deleteProjet(this.currentProjet.idProjet)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.r.navigate(['/projet']);
-        },
-        error => {
-          console.log(error);
-        });
   }*/
+  editProjet(projet:any){
+    this.projetToUpdate= projet;
+  }
 
 
 deleteProjet(id:number){
@@ -73,18 +71,117 @@ deleteProjet(id:number){
   })
 }
 
-/*editExperience(row :any) {
-this.dialog.open(DialogExperienceComponent, {
-width:'30%',
-data:row
+updateProjet(){
+  /*
+  this.projetService.updateProjet(this.formP.value,this.updP.idProjet).subscribe({
+    next:(res)=>{
+      alert("projet modifie avec success")
+      this.formP.reset()
+    },
+    error:()=>{
+      alert("error de modification")
+    }
+  })
+*/
 
-}).afterClosed().subscribe(val=>{
-if(val==='update'){
-this.getAllExperiences()
+this.projetService.updateP(this.projetToUpdate).subscribe(
+  (res)=>{
+    console.log(res);
+    
+  },
+  (err)=>{
+    console.log(err);
+    
+  });
 }
-});;
-} */
+
+/*private getProj(request) {
+  this.projetService.getPaging(request)
+  .subscribe(data => {
+    this.projet = data['content'];
+  }
+  , error => {
+    console.log(error.error.message);
+  }
+  );
+}
+
+nextPage(event: PageEvent) {
+  const request = {};
+  request['page'] = event.pageIndex.toString();
+  request['size'] = event.pageSize.toString();
+  this.getProj(request);
+}*/
 
 
+//------------------------- Generate PDF Projet --------------------------------------//
 
+  exportPDF(){
+    this.projetService.exportPDF().subscribe(x=>{
+      const blob = new Blob([x], { type: 'application/pdf' });
+      const url= window.URL.createObjectURL(blob);
+      const nav = (window.navigator as any);
+
+      if (nav.msSaveOrOpenBlob) {
+        nav.msSaveOrOpenBlob(blob);
+        return;
+      }
+
+      const data = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href= data;
+      link.download="projet.pdf";
+      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+
+      setTimeout(function(){
+        window.URL.revokeObjectURL(data);
+        link.remove();
+      }, 100);
+
+      
+    });
+  }
+
+//----------------------------------- Generate EXCEL Projet --------------------------------//
+exportExcel(){
+
+  this.projetService.exportEXCEL().subscribe(x=>{
+    const blob = new Blob([x], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const n = (window.navigator as any);
+
+    if (n.msSaveOrOpenBlob) {
+    n.msSaveOrOpenBlob(blob);
+    return;
+    }
+
+    const data = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = data;
+    link.download="projet.xlsx";
+    link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+
+    setTimeout(function(){
+      window.URL.revokeObjectURL(data);
+        link.remove();
+    }, 100);
+  });
+}
+
+//UPD
+editProj(pro : Projet){
+  this.projetService.updateP(pro).subscribe();
+}
+
+
+updateData(value: any) {
+  let body = {
+    idProjet: value.idProjet,
+    description: value.description
+  }
+
+  this.projetService.updateProjet(body,4)
+    .subscribe(response => {
+      console.log(response)
+    })
+}
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Projet } from 'src/app/Core/models/Projet.model';
 import { ProjetService } from 'src/app/Core/services/projet/projet.service';
 
+
 @Component({
   selector: 'app-add-projet',
   templateUrl: './add-projet.component.html',
@@ -42,10 +43,7 @@ export class AddProjetComponent implements OnInit {
     }
   );
   addProjet(){
-    /*
-    this.projetService.addProjet(p).subscribe(()=> {
-      this.form= false;
-    });*/
+   
 
     this.projetService.addProjet(this.rf.value).subscribe(data =>{
       console.log("add");

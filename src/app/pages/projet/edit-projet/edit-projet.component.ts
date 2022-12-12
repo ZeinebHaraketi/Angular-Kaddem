@@ -21,6 +21,19 @@ export class EditProjetComponent implements OnInit {
   updP:any;
   button:string='Change';
 
+  /*  contratToUpdate = {
+    dateDebutContrat:"",
+    dateFinContrat:"",
+    specialite:"",
+    archive:"",
+    montantContrat:""
+  } */
+
+  projetToUpdate= {
+    idProjet: "",
+    description: ""
+  }
+
 
   constructor(private projetService: ProjetService,private route: ActivatedRoute,private router: Router,private fb : FormBuilder) { }
 
@@ -29,7 +42,7 @@ export class EditProjetComponent implements OnInit {
     //    this.getTutorial(this.route.snapshot.paramMap.get('id'));
     //this.getProjet(this.route.snapshot.paramMap.get('idProjet'));
 
-    this.formP= this.fb.group({
+    /*this.formP= this.fb.group({
       idProjet: ['',Validators.required ],
       description: ['',Validators.required ]
     })
@@ -41,7 +54,7 @@ export class EditProjetComponent implements OnInit {
      this.formP.controls['description'].setValue(this.updP.description);
      this.button= "Modifier"
     }
-    
+    */
   }
 
   getProjet(idProjet) {
@@ -93,6 +106,7 @@ export class EditProjetComponent implements OnInit {
  */
 
   updateProjet(){
+    /*
     this.projetService.updateProjet(this.formP.value,this.updP.idProjet).subscribe({
       next:(res)=>{
         alert("projet modifie avec success")
@@ -102,5 +116,43 @@ export class EditProjetComponent implements OnInit {
         alert("error de modification")
       }
     })
+  */
+ /*updateContrat(){
+    this.contratService.updateContrat(this.contratToUpdate).subscribe(
+      (resp) => {
+
+        console.log(resp);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  } */
+  this.projetService.updateP(this.projetToUpdate).subscribe(
+    (res)=>{
+      console.log(res);
+      
+    },
+    (err)=>{
+      console.log(err);
+      
+    });
+  }
+
+  editProj(pro : Projet){
+    this.projetService.updateP(pro).subscribe();
+  }
+
+
+  updateData(value: any) {
+    let body = {
+      idProjet: value.idProjet,
+      description: value.description
+    }
+  
+    this.projetService.updateProjet(body,4)
+      .subscribe(response => {
+        console.log(response)
+      })
   }
 }

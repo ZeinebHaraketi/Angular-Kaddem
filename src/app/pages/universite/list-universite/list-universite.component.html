@@ -1,0 +1,134 @@
+<h3 style="color: red;">La liste des Universites</h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">Card tables</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let u of listU">
+                 <td>{{u.idUniv}}</td>
+                 <td>{{u.nomUniv}}</td>
+                 <!--Bouton Modifier-->
+                 <td><button  class="btn btn-outline-primary" (click)="editUnivers(u)"
+                  data-toggle="modal" data-target="#exampleModal">
+                  Edit</button>
+
+                 <button type="button" class="btn btn-outline-danger" (click)="deleteU(u.idUniv)">
+                  Delete</button>
+                </td>
+                 
+             
+                </tr>
+               
+
+               
+              </tbody>
+            </table>
+           
+            <table>
+              <tbody>
+                <tr *ngFor="let u of listU">
+                  <!--<ng-template #mymodal let-modal>-->
+                    <!--<div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                        <button type="button" class="close" aria-label="Close"
+                            (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true" (click)="cancel()">×</span>
+
+                        </button>
+
+                    </div>-->
+
+                   <div>
+                    <form>
+                        <div class="modal-body">
+
+                            <div class="row" class="col-md-5">
+                                <label>Id</label>
+                                <input type="text" [(ngModel)]="u.idUniv" [ngModelOptions]="{standalone : true}" />
+                            </div>
+                            <div class="row" class="col-md-5">
+                                <label>Nom Universite</label>
+                                <input type="text" [(ngModel)]="u.nomUniv" [ngModelOptions]="{standalone : true}" />
+                            </div>
+                           
+                        </div>
+
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-info"
+                                (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                            <button class="btn btn-success"(click)="editUnivers(u)" (click)="modal.close('Save click')">Validate</button>
+                        </div>
+                    </form>
+                </div>
+              <!--</ng-template>-->
+                </tr>
+              </tbody>
+            </table> 
+
+          </div>
+
+          
+          <hr>
+          <div>
+            <button class="btn btn-danger" style="margin-bottom: 10px;" mat-raised-button color="accent" (click)="exportExcel()">Excel</button> 
+            
+            </div>   
+          <hr>
+         
+          <div class="card-footer py-4">
+          
+
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item disabled">
+                  <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="javascript:void(0)">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="javascript:void(0)">
+                    <i class="fas fa-angle-right"></i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+
+  <!--MODIFY FORM-->
+ 

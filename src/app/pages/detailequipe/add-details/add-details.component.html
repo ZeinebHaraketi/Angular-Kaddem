@@ -1,0 +1,41 @@
+<h2 style="color: red;">Ajout d'un Détail</h2>
+<br>
+<br>
+<br>
+<br>
+
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="salle">Salle</label>
+        <input
+          type="text"
+          class="form-control"
+          id="salle"
+          required
+          [(ngModel)]="det.salle"
+          name="salle"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="thematique">Thematique</label>
+        <input
+          class="form-control"
+          id="thematique"
+          required
+          [(ngModel)]="det.thematique"
+          name="thematique"
+        />
+      </div>
+
+     
+  
+      <button (click)="saveDE()" class="btn btn-success">Submit</button>
+    </div>
+  
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newDetails()">Add</button>
+    </div>
+  </div>
