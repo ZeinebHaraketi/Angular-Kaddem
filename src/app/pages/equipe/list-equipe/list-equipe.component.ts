@@ -13,12 +13,15 @@ export class ListEquipeComponent implements OnInit {
   equipe !: Equipe;
   closeResult !: string;
   currentEquipe = null;
+  searchText;
+
 
 
   constructor(private equipeService: EquipeService,private r: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllEquipes();
+    this.getData()
 
     this.equipe ={
         idEquipe:null,
@@ -28,6 +31,16 @@ export class ListEquipeComponent implements OnInit {
 
      
      //this.getEquipe(this.route.snapshot.paramMap.get('idEquipe'));
+  }
+  p:any;
+  data:any=[];
+  getData() {
+    this.equipeService.getData().subscribe(
+      (data) => {
+        this.data = data;
+        console.log(this.data)
+      }
+    );
   }
 
   getAllEquipes(){

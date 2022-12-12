@@ -20,6 +20,12 @@ export class EquipeService {
 
   constructor(private http:HttpClient) { }
 
+  
+  getData() {
+    return this.http.get
+    ('https://jsonplaceholder.typicode.com/todos');
+   }
+
   getAllEquipes(){
     return this.http.get(this.API_URL);
 

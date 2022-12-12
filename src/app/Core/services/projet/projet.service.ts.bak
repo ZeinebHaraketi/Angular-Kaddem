@@ -67,6 +67,11 @@ export class ProjetService {
   }
 
 
+  /**
+   *update(id:number, product:Product): Observable<any> {
+		return this.httpClient.put(AppConstants.API_URL + 'products/' + id, JSON.stringify(product), AppConstants.httpOptions)
+	}
+   */
 
    exportPDF():Observable<Blob>{
     return this.http.get("http://localhost:8091/projet/pdf/",{responseType: 'blob' });
